@@ -984,7 +984,7 @@ save__dssp_statistics.accessible_surface_of_protein
 ;
 	_item.name               '_dssp_statistics.accessible_surface_of_protein'
 	_item.category_id        dssp_statistics
-	_item.mandatory_code     yes
+	_item.mandatory_code     no
 	_item_type.code          float
 	save_
 

@@ -92,7 +92,7 @@ int main(int argc, char *const argv[])
 			exit(1);
 		}
 
-		std::ofstream out(argv[3]);
+		gxrio::ofstream out(argv[3]);
 		if (not out.is_open())
 		{
 			std::cerr << "Error creating output file\n";

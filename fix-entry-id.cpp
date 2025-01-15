@@ -77,7 +77,30 @@ int main(int argc, char *const argv[])
 	if (argc == 3)
 		std::cout << file << "\n";
 	else
-		file.save(argv[3]);
+	{
+		std::filesystem::path p(argv[3]);
+		auto d = p.parent_path();
+
+		std::error_code ec;
+
+		if (not std::filesystem::exists(d, ec))
+			std::filesystem::create_directories(d, ec);
+		
+		if (ec != std::errc{})
+		{
+			std::cerr << "Error creating direcories for output: " << ec.message() << "\n";
+			exit(1);
+		}
+
+		std::ofstream out(argv[3]);
+		if (not out.is_open())
+		{
+			std::cerr << "Error creating output file\n";
+			exit(1);
+		}
+
+		out << file;
+	}
 
 	return 0;
 }
